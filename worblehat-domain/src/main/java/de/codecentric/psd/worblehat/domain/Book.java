@@ -18,6 +18,8 @@ public class Book implements Serializable {
   private String author;
   private String edition;
 
+  private String description;
+
   private String isbn;
   private int yearOfPublication;
 
@@ -32,18 +34,19 @@ public class Book implements Serializable {
   /**
    * Creates a new book instance.
    *
-   * @param title the title
-   * @param author the author
-   * @param edition the edition
-   * @param isbn the isbn
+   * @param title             the title
+   * @param author            the author
+   * @param edition           the edition
+   * @param isbn              the isbn
    * @param yearOfPublication the yearOfPublication
+   * @param description
    */
   public Book(
-      @Nonnull String title,
-      @Nonnull String author,
-      @Nonnull String edition,
-      @Nonnull String isbn,
-      int yearOfPublication) {
+    @Nonnull String title,
+    @Nonnull String author,
+    @Nonnull String edition,
+    @Nonnull String isbn,
+    int yearOfPublication, String description) {
     /*
      * === HINT ===
      * If you consider to add another parameter to this constructor, think about the consequences first.
@@ -57,6 +60,7 @@ public class Book implements Serializable {
     this.edition = edition;
     this.isbn = isbn;
     this.yearOfPublication = yearOfPublication;
+    this.description = description;
   }
 
   public String getTitle() {
@@ -133,5 +137,13 @@ public class Book implements Serializable {
         + ", borrowing="
         + borrowing
         + '}';
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

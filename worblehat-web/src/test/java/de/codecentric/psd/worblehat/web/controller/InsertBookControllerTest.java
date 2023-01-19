@@ -27,7 +27,7 @@ class InsertBookControllerTest {
 
   private BindingResult bindingResult;
 
-  private static final Book TEST_BOOK = new Book("title", "author", "edition", "isbn", 2016);
+  private static final Book TEST_BOOK = new Book("title", "author", "edition", "isbn", 2016, null);
 
   @BeforeEach
   public void setUp() {
@@ -58,7 +58,7 @@ class InsertBookControllerTest {
   @Test
   void shouldCreateBookAndNavigateToBookList() {
     setupFormData();
-    when(bookService.createBook(any(), any(), any(), any(), anyInt()))
+    when(bookService.createBook(any(), any(), any(), any(), anyInt(), null))
         .thenReturn(Optional.of(TEST_BOOK));
 
     String navigateTo = insertBookController.processSubmit(bookDataFormData, bindingResult);
@@ -70,7 +70,7 @@ class InsertBookControllerTest {
   @Test
   void shouldStayOnInsertBookPageWhenCreatingBookFails() {
     setupFormData();
-    when(bookService.createBook(any(), any(), any(), any(), anyInt())).thenReturn(Optional.empty());
+    when(bookService.createBook(any(), any(), any(), any(), anyInt(), null)).thenReturn(Optional.empty());
 
     String navigateTo = insertBookController.processSubmit(bookDataFormData, bindingResult);
 
@@ -88,7 +88,7 @@ class InsertBookControllerTest {
             TEST_BOOK.getAuthor(),
             TEST_BOOK.getEdition(),
             TEST_BOOK.getIsbn(),
-            TEST_BOOK.getYearOfPublication());
+            TEST_BOOK.getYearOfPublication(), null);
   }
 
   private void setupFormData() {
