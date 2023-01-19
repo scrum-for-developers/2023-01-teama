@@ -17,9 +17,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.MapBindingResult;
 import org.springframework.validation.ObjectError;
 
-class ReturnAllBooksControllerTest {
+class ReturnBooksControllerTest {
 
-  private ReturnAllBooksController returnAllBooksController;
+  private ReturnBooksController returnBooksController;
 
   private BookService bookService;
 
@@ -30,7 +30,7 @@ class ReturnAllBooksControllerTest {
   @BeforeEach
   void setUp() throws Exception {
     bookService = mock(BookService.class);
-    returnAllBooksController = new ReturnAllBooksController(bookService);
+    returnBooksController = new ReturnBooksController(bookService);
     returnAllBooksFormData = new ReturnAllBooksFormData();
     bindingResult = new MapBindingResult(new HashMap<>(), "");
   }
@@ -39,7 +39,7 @@ class ReturnAllBooksControllerTest {
   void shouldSetupForm() throws Exception {
     ModelMap modelMap = new ModelMap();
 
-    returnAllBooksController.prepareView(modelMap);
+    returnBooksController.prepareView(modelMap);
 
     assertThat(modelMap.get("returnAllBookFormData"), is(not(nullValue())));
   }
@@ -48,8 +48,7 @@ class ReturnAllBooksControllerTest {
   void shouldRejectErrors() throws Exception {
     bindingResult.addError(new ObjectError("", ""));
 
-    String navigateTo =
-        returnAllBooksController.returnAllBooks(returnAllBooksFormData, bindingResult);
+    String navigateTo = returnBooksController.returnAllBooks(returnAllBooksFormData, bindingResult);
 
     assertThat(navigateTo, is("returnAllBooks"));
   }
@@ -59,8 +58,7 @@ class ReturnAllBooksControllerTest {
     String borrower = "someone@codecentric.de";
     returnAllBooksFormData.setEmailAddress(borrower);
 
-    String navigateTo =
-        returnAllBooksController.returnAllBooks(returnAllBooksFormData, bindingResult);
+    String navigateTo = returnBooksController.returnAllBooks(returnAllBooksFormData, bindingResult);
 
     verify(bookService).returnAllBooksByBorrower(borrower);
     assertThat(navigateTo, is("home"));

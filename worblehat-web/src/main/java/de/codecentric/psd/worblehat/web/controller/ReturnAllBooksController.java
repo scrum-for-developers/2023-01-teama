@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 /** Controller class for the */
 @Controller
 @RequestMapping("/returnAllBooks")
-public class ReturnAllBooksController {
+public class ReturnBooksController {
 
   private BookService bookService;
 
   @Autowired
-  public ReturnAllBooksController(BookService bookService) {
+  public ReturnBooksController(BookService bookService) {
     this.bookService = bookService;
   }
 
@@ -33,7 +33,12 @@ public class ReturnAllBooksController {
     if (result.hasErrors()) {
       return "returnAllBooks";
     } else {
-      bookService.returnAllBooksByBorrower(formData.getEmailAddress());
+      if (formData.getIsbn() == null || formData.getIsbn().isEmpty()) {
+        bookService.returnAllBooksByBorrower(formData.getEmailAddress());
+      } else {
+        bookService.returnBookByBorrowerAndISBN(formData.getEmailAddress(), formData.getIsbn());
+      }
+
       return "home";
     }
   }
