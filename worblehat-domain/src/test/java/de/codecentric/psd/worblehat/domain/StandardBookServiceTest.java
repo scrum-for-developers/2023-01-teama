@@ -141,7 +141,8 @@ class StandardBookServiceTest {
         aBook.getAuthor(),
         aBook.getEdition(),
         aBook.getIsbn(),
-        aBook.getYearOfPublication(), null);
+        aBook.getYearOfPublication(),
+        null);
 
     // assert that book was saved to repository
     ArgumentCaptor<Book> bookArgumentCaptor = ArgumentCaptor.forClass(Book.class);
@@ -164,7 +165,8 @@ class StandardBookServiceTest {
         aBook.getAuthor(),
         aBook.getEdition(),
         aBook.getIsbn(),
-        aBook.getYearOfPublication(), null);
+        aBook.getYearOfPublication(),
+        null);
     verify(bookRepository, times(1)).save(any(Book.class));
   }
 
@@ -176,7 +178,8 @@ class StandardBookServiceTest {
         aBook.getAuthor(),
         aBook.getEdition(),
         aBook.getIsbn(),
-        aBook.getYearOfPublication(), null);
+        aBook.getYearOfPublication(),
+        null);
     verify(bookRepository, times(0)).save(any(Book.class));
   }
 
@@ -188,7 +191,8 @@ class StandardBookServiceTest {
         aBook.getAuthor() + "X",
         aBook.getEdition(),
         aBook.getIsbn(),
-        aBook.getYearOfPublication(), null);
+        aBook.getYearOfPublication(),
+        null);
     verify(bookRepository, times(0)).save(any(Book.class));
   }
 

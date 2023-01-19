@@ -34,19 +34,20 @@ public class Book implements Serializable {
   /**
    * Creates a new book instance.
    *
-   * @param title             the title
-   * @param author            the author
-   * @param edition           the edition
-   * @param isbn              the isbn
+   * @param title the title
+   * @param author the author
+   * @param edition the edition
+   * @param isbn the isbn
    * @param yearOfPublication the yearOfPublication
    * @param description
    */
   public Book(
-    @Nonnull String title,
-    @Nonnull String author,
-    @Nonnull String edition,
-    @Nonnull String isbn,
-    int yearOfPublication, String description) {
+      @Nonnull String title,
+      @Nonnull String author,
+      @Nonnull String edition,
+      @Nonnull String isbn,
+      int yearOfPublication,
+      String description) {
     /*
      * === HINT ===
      * If you consider to add another parameter to this constructor, think about the consequences first.
