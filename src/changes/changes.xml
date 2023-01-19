@@ -31,5 +31,15 @@
         - WB-125: updated component versions
       </action>
     </release>
+
+    <release version="1.2.0" date="2022-01-19"
+             description="First Team Fuchs release">
+      <action dev="Team Fuchs" type="add">
+        WB-111: added book description
+      </action>
+      <action dev="Team Fuchs" type="update">
+        - WB-104: modified error messages
+      </action>
+    </release>
 	</body>
 </document>
