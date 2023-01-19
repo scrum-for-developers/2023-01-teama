@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 /** Controller class for the */
 @Controller
 @RequestMapping("/returnAllBooks")
-public class ReturnBooksController {
+public class ReturnAllBooksController {
 
   private BookService bookService;
 
   @Autowired
-  public ReturnBooksController(BookService bookService) {
+  public ReturnAllBooksController(BookService bookService) {
     this.bookService = bookService;
   }
 

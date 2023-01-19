@@ -17,9 +17,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.MapBindingResult;
 import org.springframework.validation.ObjectError;
 
-class ReturnBooksControllerTest {
+class ReturnAllBooksControllerTest {
 
-  private ReturnBooksController returnBooksController;
+  private ReturnAllBooksController returnAllBooksController;
 
   private BookService bookService;
 
@@ -30,7 +30,7 @@ class ReturnBooksControllerTest {
   @BeforeEach
   void setUp() throws Exception {
     bookService = mock(BookService.class);
-    returnBooksController = new ReturnBooksController(bookService);
+    returnAllBooksController = new ReturnAllBooksController(bookService);
     returnAllBooksFormData = new ReturnAllBooksFormData();
     bindingResult = new MapBindingResult(new HashMap<>(), "");
   }
@@ -39,7 +39,7 @@ class ReturnBooksControllerTest {
   void shouldSetupForm() throws Exception {
     ModelMap modelMap = new ModelMap();
 
-    returnBooksController.prepareView(modelMap);
+    returnAllBooksController.prepareView(modelMap);
 
     assertThat(modelMap.get("returnAllBookFormData"), is(not(nullValue())));
   }
@@ -48,7 +48,8 @@ class ReturnBooksControllerTest {
   void shouldRejectErrors() throws Exception {
     bindingResult.addError(new ObjectError("", ""));
 
-    String navigateTo = returnBooksController.returnAllBooks(returnAllBooksFormData, bindingResult);
+    String navigateTo =
+        returnAllBooksController.returnAllBooks(returnAllBooksFormData, bindingResult);
 
     assertThat(navigateTo, is("returnAllBooks"));
   }
@@ -58,7 +59,8 @@ class ReturnBooksControllerTest {
     String borrower = "someone@codecentric.de";
     returnAllBooksFormData.setEmailAddress(borrower);
 
-    String navigateTo = returnBooksController.returnAllBooks(returnAllBooksFormData, bindingResult);
+    String navigateTo =
+        returnAllBooksController.returnAllBooks(returnAllBooksFormData, bindingResult);
 
     verify(bookService).returnAllBooksByBorrower(borrower);
     assertThat(navigateTo, is("home"));
