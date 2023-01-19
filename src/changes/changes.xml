@@ -25,7 +25,7 @@
       </action>
     </release>
 
-    <release version="1.0.1" date="2022-01-19"
+    <release version="1.1.0" date="2022-01-19"
              description="First Team Fuchs release">
       <action dev="Team Fuchs" type="update">
         - WB-125: updated component versions
