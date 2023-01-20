@@ -43,7 +43,13 @@ Feature: Adding a new book to the library
             | Sourcery | Terry Pratchett | 1       | 1989 | 0552131075 | Terry Pratchett        | XX_DIFERENT_TITLE_XX | 1  |
 
 
+  Scenario: Adding a book with an isbn with leading and trailing whitespace characters
 
+    Given an empty library
+
+    When a librarian adds a random book and the "isbn" of that book is "  1111111111 "
+
+    Then the booklist shows that book with "isbn" as "1111111111"
 
 
 
