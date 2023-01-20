@@ -11,6 +11,7 @@ Feature: Adding a new book to the library
         Examples:
             | property | value           |
             | title    | Sourcery        |
+            | description     | Ein super tolles Buch!      |
             | author   | Terry Pratchett |
             | year     | 1989            |
             | isbn     | 123456789X      |

@@ -28,6 +28,7 @@ public class BookList {
   @Then("the booklist contains a book with {string}, {string}, {string}, {int} and {string}")
   public void bookListContainsRowWithValues(
       final String title,
+      final String description,
       final String author,
       final String year,
       final Integer edition,
@@ -36,6 +37,7 @@ public class BookList {
     HtmlBookList htmlBookList = seleniumAdapter.getTableContent(PageElement.BOOKLIST);
     HtmlBook htmlBook = htmlBookList.getBookByIsbn(isbn);
     assertThat(title, is(htmlBook.getTitle()));
+    assertThat(description, is(htmlBook.getDescription()));
     assertThat(author, is(htmlBook.getAuthor()));
     assertThat(year, is(htmlBook.getYearOfPublication()));
     assertThat(edition, is(htmlBook.getEdition()));
@@ -51,6 +53,9 @@ public class BookList {
     switch (property) {
       case "title":
         assertThat(htmlBook.getTitle(), is(value));
+        break;
+      case "description":
+        assertThat(htmlBook.getDescription(), is(value));
         break;
       case "author":
         assertThat(htmlBook.getAuthor(), is(value));
